@@ -3,5 +3,5 @@
         "src"
     ],
     "ext": ".ts,.js",
-    "exec": "tsc && node ./dist/server.js"
+    "exec": "rimraf ./dist/ && tsc && node ./dist/server.js"
 }

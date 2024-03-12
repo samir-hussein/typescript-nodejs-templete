@@ -7,6 +7,7 @@ import apiRoutes from "./routes/api.js";
 import path from 'path';
 import { fileURLToPath } from 'url';
 import ErrorHandler from "./app/Utilities/ErrorHandler.js";
+import ServiceProvider from "./app/ServiceProvider/ServiceProvider.js";
 
 dotenv.config();
 
@@ -26,6 +27,8 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(xss());  // data sanitization aganist xss
 app.use(compression());
+
+await ServiceProvider.boot();
 
 app.get('/', function (req, res) {
     return res.sendFile(process.env.STATIC_DIR + '/views/welcome.html');
